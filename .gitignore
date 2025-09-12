@@ -1,3 +1,50 @@
-data/large/*
-.venv/
+
 /.quarto/
+
+# ---- Python / venvs / build ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+.venv/
+venv/
+.env
+.env.*
+dist/
+build/
+pip-wheel-metadata/
+
+# ---- Jupyter ----
+.ipynb_checkpoints/
+*.ipynb_convert/    # if you ever create these
+*.log
+
+# ---- OS cruft ----
+.DS_Store
+Thumbs.db
+
+# ---- Quarto output (when publishing via gh-pages) ----
+_site/
+
+# If you choose the "main/docs" GitHub Pages route instead, DO NOT ignore docs/.
+# docs/
+
+# ---- Tutorial data (created at runtime) ----
+data/large/
+data/derived/
+derived_outputs.zip
+
+# Keep placeholder files so folders exist in repo
+!data/.gitkeep
+!data/large/.gitkeep
+!data/derived/.gitkeep
+
+# ---- Binder / Quarto config (must be committed) ----
+!binder/
+!.binder/
+!requirements.txt
+!environment.yml
+!runtime.txt
+!_quarto.yml
