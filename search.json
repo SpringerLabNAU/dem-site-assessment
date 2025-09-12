@@ -1,0 +1,187 @@
+[
+  {
+    "objectID": "Tutorial2.html",
+    "href": "Tutorial2.html",
+    "title": "Tutorial 2: Terrain Attributes from DEM",
+    "section": "",
+    "text": "Today we will be calculating terrain attributes from a DEM. Terrain attributes are derived from the elevation data in a DEM and provide insights into the landscape’s shape, slope, and other characteristics. We will use a python library called xdem to calculate these attributes.\nxdem is a new and powerful library for performing quantiative analysis on elevation data. It was designed explicity by glaciologists tracking changes in glaciers and ice sheets from repeat elevation data. However, it has many functions that are useful for general DEM analysis.\nother libraries we will use include rasterio for reading and writing raster data, and matplotlib for visualizing the results.\n# This chunk imports the required libraries\nimport matplotlib.pyplot as plt\nimport xdem\nfrom rasterio.enums import Resampling\n# if you completed tutorial 1, then the dem below is already downloaded and clipped to the study area. \n\ndem = xdem.DEM(\"data/derived/study_area_dem_clipped.tif\") # load the DEM as an xdem object\ndem_utm = dem.reproject( # ensure the data is properly projected\n    crs=\"EPSG:32612\",                       # meters per pixel (pick what you want)\n    resampling=Resampling.bilinear\n)",
+    "crumbs": [
+      "Tutorials",
+      "Tutorial 2"
+    ]
+  },
+  {
+    "objectID": "Tutorial2.html#exercise-6-calculate-topographic-position-index-tpi-using-xdems-built-in-function.",
+    "href": "Tutorial2.html#exercise-6-calculate-topographic-position-index-tpi-using-xdems-built-in-function.",
+    "title": "Tutorial 2: Terrain Attributes from DEM",
+    "section": "Exercise 6: Calculate Topographic Position Index (TPI) using xdem’s built-in function.",
+    "text": "Exercise 6: Calculate Topographic Position Index (TPI) using xdem’s built-in function.\nThe topographic position index (TPI) is a metric of slope position, described in Weiss (2001), that corresponds to the difference of the elevation of a central pixel with the average of that of neighbouring pixels. Its unit is that of the DEM (typically meters) and it can be computed for any window size (default 3x3 pixels).\nWe will use a window size of 15x15 pixels to capture larger scale topographic features.\n\ntpi = dem_utm.topographic_position_index(window_size=15)\ntpi.plot(cmap=\"Spectral\", cbar_title=\"Topographic position index (m)\", vmin=-5, vmax=5)",
+    "crumbs": [
+      "Tutorials",
+      "Tutorial 2"
+    ]
+  },
+  {
+    "objectID": "Tutorial2.html#exercise-7-calculate-the-terrain-ruggedness-index-tri-using-xdems-built-in-function.",
+    "href": "Tutorial2.html#exercise-7-calculate-the-terrain-ruggedness-index-tri-using-xdems-built-in-function.",
+    "title": "Tutorial 2: Terrain Attributes from DEM",
+    "section": "Exercise 7: Calculate the terrain ruggedness index (TRI) using xdem’s built-in function.",
+    "text": "Exercise 7: Calculate the terrain ruggedness index (TRI) using xdem’s built-in function.\nThe terrain ruggedness index (TRI) is a metric of terrain ruggedness, based on cumulated differences in elevation between a central pixel and its surroundings. Its unit is that of the DEM (typically meters) and it can be computed for any window size (default 3x3 pixels).\nFor topography (default), the method of Riley et al. (1999) is generally used, where the TRI is computed by the squareroot of squared differences with neighbouring pixels\nfor bathymetry, the method of Wilson et al. (2007) is generally used, where the TRI is defined by the mean absolute difference with neighbouring pixels\n\ntri = dem_utm.terrain_ruggedness_index(window_size=3)\ntri.plot(cmap=\"magma\", cbar_title=\"Terrain ruggedness index (m)\")",
+    "crumbs": [
+      "Tutorials",
+      "Tutorial 2"
+    ]
+  },
+  {
+    "objectID": "Tutorial2.html#exercsise-8-calculate-the-fractal-roughness-using-xdems-built-in-function.",
+    "href": "Tutorial2.html#exercsise-8-calculate-the-fractal-roughness-using-xdems-built-in-function.",
+    "title": "Tutorial 2: Terrain Attributes from DEM",
+    "section": "Exercsise 8: Calculate the fractal roughness using xdem’s built-in function.",
+    "text": "Exercsise 8: Calculate the fractal roughness using xdem’s built-in function.\nThe fractal roughness is a metric of terrain ruggedness based on the local fractal dimension estimated by the volume box-counting method of Taud and Parrot (2005). The fractal roughness is computed by estimating the fractal dimension in 3D space, for a local window centered on the DEM pixels. Its unit is that of a dimension, and is always between 1 (dimension of a line in 3D space) and 3 (dimension of a cube in 3D space). It can only be computed on window sizes larger than 5x5 pixels, and defaults to 13x13.\n\nfractal_roughness = dem_utm.fractal_roughness()\nfractal_roughness.plot(cmap=\"Reds\", cbar_title=\"Fractal roughness (dimensions)\")",
+    "crumbs": [
+      "Tutorials",
+      "Tutorial 2"
+    ]
+  },
+  {
+    "objectID": "slides/UAV-SfM.html#what-is-sfm",
+    "href": "slides/UAV-SfM.html#what-is-sfm",
+    "title": "UAV-based Structure from Motion for Sinkhole Characterization",
+    "section": "What is SfM?",
+    "text": "What is SfM?\n\n3D from overlapping 2D images\nCamera poses + sparse cloud → MVS dense cloud → DEM/orthomosaic",
+    "crumbs": [
+      "Slides",
+      "UAV-based Structure from Motion"
+    ]
+  },
+  {
+    "objectID": "slides/UAV-SfM.html#flight-data",
+    "href": "slides/UAV-SfM.html#flight-data",
+    "title": "UAV-based Structure from Motion for Sinkhole Characterization",
+    "section": "Flight & Data",
+    "text": "Flight & Data\n\n≥75–85% overlap; nadir + oblique\nGCPs or RTK/PPK\nConsistent exposure; avoid harsh shadows",
+    "crumbs": [
+      "Slides",
+      "UAV-based Structure from Motion"
+    ]
+  },
+  {
+    "objectID": "slides/UAV-SfM.html#products",
+    "href": "slides/UAV-SfM.html#products",
+    "title": "UAV-based Structure from Motion for Sinkhole Characterization",
+    "section": "Products",
+    "text": "Products\n\nDEM/DSM, orthomosaic, point cloud, mesh\nDerivatives: slope/aspect, contours, DoD (change)",
+    "crumbs": [
+      "Slides",
+      "UAV-based Structure from Motion"
+    ]
+  },
+  {
+    "objectID": "slides/UAV-SfM.html#workflow-highlights",
+    "href": "slides/UAV-SfM.html#workflow-highlights",
+    "title": "UAV-based Structure from Motion for Sinkhole Characterization",
+    "section": "Workflow Highlights",
+    "text": "Workflow Highlights\n\nPlan & fly\nAlign images (tie points, bundle adjustment)\nDensify (MVS)\nRasterize (DEM/DSM, ortho)\nQC (RMSE vs checkpoints)",
+    "crumbs": [
+      "Slides",
+      "UAV-based Structure from Motion"
+    ]
+  },
+  {
+    "objectID": "slides/UAV-SfM.html#for-sinkholes",
+    "href": "slides/UAV-SfM.html#for-sinkholes",
+    "title": "UAV-based Structure from Motion for Sinkhole Characterization",
+    "section": "For Sinkholes",
+    "text": "For Sinkholes\n\nDelineate rims/depressions\nMetrics: depth, volume (cut/fill), slope, curvature\nIntegrate with lineaments & karst layers",
+    "crumbs": [
+      "Slides",
+      "UAV-based Structure from Motion"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DEM Site Assessment",
+    "section": "",
+    "text": "Welcome! Use the sidebar to open the Slides or Tutorials.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#run-the-tutorials-yourself-using-binder-environment",
+    "href": "index.html#run-the-tutorials-yourself-using-binder-environment",
+    "title": "DEM Site Assessment",
+    "section": "Run the tutorials yourself using binder environment:",
+    "text": "Run the tutorials yourself using binder environment:\n\nTutorial 1: \nTutorial 2:",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "Tutorial1.html",
+    "href": "Tutorial1.html",
+    "title": "Tutorial 1 - Finding, Saving, and Loading Elevation Data for Your Study Area",
+    "section": "",
+    "text": "This notebook demonstrates a simple workflow for obtaining elevation data (DEM) for a study area using a shapefile and the National Map 10m (1/3 arcsecond) DEM accessed through their API.",
+    "crumbs": [
+      "Tutorials",
+      "Tutorial 1"
+    ]
+  },
+  {
+    "objectID": "Tutorial1.html#load-study-area-shapefile",
+    "href": "Tutorial1.html#load-study-area-shapefile",
+    "title": "Tutorial 1 - Finding, Saving, and Loading Elevation Data for Your Study Area",
+    "section": "1. Load Study Area Shapefile",
+    "text": "1. Load Study Area Shapefile\nWe’ll use geopandas to load the study area shapefile located at data/Study_Area.\ngeopandas is a Python library used for working with geospatial data. It extends the capabilities of pandas to allow spatial operations on geometric types.\n\nimport geopandas as gpd\n\n# Load the study area shapefile\nshapefile_path = \"data/Study_Area.shp\"\ngdf = gpd.read_file(shapefile_path)\n\n# Display basic info\nprint(gdf)\ngdf.plot(edgecolor='k', facecolor='none')\n\n     Shape_Leng    Shape_Area  \\\n0  34363.321288  7.303913e+07   \n\n                                            geometry  \n0  POLYGON Z ((-12428367.605 4190219.988 0, -1241...",
+    "crumbs": [
+      "Tutorials",
+      "Tutorial 1"
+    ]
+  },
+  {
+    "objectID": "Tutorial1.html#find-elevation-data-for-your-area",
+    "href": "Tutorial1.html#find-elevation-data-for-your-area",
+    "title": "Tutorial 1 - Finding, Saving, and Loading Elevation Data for Your Study Area",
+    "section": "2. Find Elevation Data for Your Area",
+    "text": "2. Find Elevation Data for Your Area\nWe’ll use the National Map’s Elevation Point Query Service to find a 30m DEM tile that covers our study area. For simplicity, we’ll use the bounding box of the shapefile.\n\nimport requests\n\n# Ensure your study area is WGS84 lon/lat\ngdf4326 = gdf.to_crs(4326)           # &lt;-- important\nminx, miny, maxx, maxy = gdf4326.total_bounds\n\nparams = {\n    \"bbox\": f\"{minx},{miny},{maxx},{maxy}\",\n    \"q\": \"1 arc-second DEM\",         # also try: \"Digital Elevation Model (DEM) 1 arc-second\"\n    \"prodFormats\": \"GeoTIFF\",        # filter to GeoTIFFs\n    \"max\": 50                        # number of items to return\n}\n\nurl = \"https://tnmaccess.nationalmap.gov/api/v1/products\"\nr = requests.get(url, params=params, timeout=60)\nr.raise_for_status()\ndata = r.json()\n\n# Collect GeoTIFF URLs (handles both 'downloadURL' and 'files' patterns)\ntif_urls = []\nfor item in data.get(\"items\", []):\n    u = item.get(\"downloadURL\", \"\")\n    if u.endswith(\".tif\"):\n        tif_urls.append(u)\n    for f in item.get(\"files\", []):\n        fu = f.get(\"url\", \"\")\n        if fu.endswith(\".tif\"):\n            tif_urls.append(fu)\n\nprint(\"Found DEMs:\", len(tif_urls))\n#print(\"Example:\", tif_urls if tif_urls else None)\n\nfor i, url in enumerate(tif_urls):\n    print(f\"{i}: {url}\")\n\nFound DEMs: 8\n0: https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/historical/n36w112/USGS_1_n36w112_20210106.tif\n1: https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/historical/n36w112/USGS_1_n36w112_20230418.tif\n2: https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/historical/n36w112/USGS_1_n36w112_20240614.tif\n3: https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/historical/n36w112/USGS_1_n36w112_20190924.tif\n4: https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/historical/n36w112/USGS_13_n36w112_20210106.tif\n5: https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/historical/n36w112/USGS_13_n36w112_20230418.tif\n6: https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/historical/n36w112/USGS_13_n36w112_20240614.tif\n7: https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/historical/n36w112/USGS_13_n36w112_20190924.tif",
+    "crumbs": [
+      "Tutorials",
+      "Tutorial 1"
+    ]
+  },
+  {
+    "objectID": "Tutorial1.html#download-elevation-data",
+    "href": "Tutorial1.html#download-elevation-data",
+    "title": "Tutorial 1 - Finding, Saving, and Loading Elevation Data for Your Study Area",
+    "section": "3. Download Elevation Data",
+    "text": "3. Download Elevation Data\nDownload the DEM GeoTIFF file for the study area.\n\nimport os\nimport rasterio\n\ndem_url = tif_urls[4] if tif_urls else None\n\noutput_dir = \"data/large\"\nos.makedirs(output_dir, exist_ok=True)\ndem_path = os.path.join(output_dir, \"study_area_dem.tif\")\n\nif dem_url:\n    dem_response = requests.get(dem_url, stream=True)\n    with open(dem_path, \"wb\") as f:\n        for chunk in dem_response.iter_content(chunk_size=8192):\n            f.write(chunk)\n    print(f\"DEM saved to {dem_path}\")\nelse:\n    print(\"DEM URL not found. Please check the API response.\")\n\nDEM saved to data/large\\study_area_dem.tif",
+    "crumbs": [
+      "Tutorials",
+      "Tutorial 1"
+    ]
+  },
+  {
+    "objectID": "Tutorial1.html#save-the-dem-or-tiff",
+    "href": "Tutorial1.html#save-the-dem-or-tiff",
+    "title": "Tutorial 1 - Finding, Saving, and Loading Elevation Data for Your Study Area",
+    "section": "4. Save the DEM or TIFF",
+    "text": "4. Save the DEM or TIFF\nThe DEM file has been saved as a GeoTIFF in the data folder.",
+    "crumbs": [
+      "Tutorials",
+      "Tutorial 1"
+    ]
+  },
+  {
+    "objectID": "Tutorial1.html#load-and-display-elevation-data",
+    "href": "Tutorial1.html#load-and-display-elevation-data",
+    "title": "Tutorial 1 - Finding, Saving, and Loading Elevation Data for Your Study Area",
+    "section": "5. Load and Display Elevation Data",
+    "text": "5. Load and Display Elevation Data\nWe’ll use rasterio and matplotlib to load and visualize the elevation data.\n\nimport matplotlib.pyplot as plt \nfrom rasterio.plot import show\n# Open DEM and reproject study area to match DEM CRS\nwith rasterio.open(dem_path) as src:\n    dem_crs = src.crs\n\ngdf_dem = gdf.to_crs(dem_crs)  # IMPORTANT: match CRS for correct overlay\n\n# Plot DEM, then overlay boundaries\nwith rasterio.open(dem_path) as src:\n    fig, ax = plt.subplots(figsize=(8, 6))\n    show(src, ax=ax, cmap=\"terrain\")\n    gdf_dem.boundary.plot(ax=ax, color=\"k\", linewidth=1.5)\n    ax.set_title(\"DEM with Study Area Overlay\")\n    plt.show()",
+    "crumbs": [
+      "Tutorials",
+      "Tutorial 1"
+    ]
+  }
+]
