@@ -1,0 +1,7 @@
+geopandas
+rasterio
+matplotlib
+numpy
+requests
+shapely
+xdem
