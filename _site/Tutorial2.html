@@ -266,13 +266,13 @@ window.Quarto = {
 <p>Today we will be calculating terrain attributes from a DEM. Terrain attributes are derived from the elevation data in a DEM and provide insights into the landscape’s shape, slope, and other characteristics. We will use a python library called <code>xdem</code> to calculate these attributes.</p>
 <p>xdem is a new and powerful library for performing quantiative analysis on elevation data. It was designed explicity by glaciologists tracking changes in glaciers and ice sheets from repeat elevation data. However, it has many functions that are useful for general DEM analysis.</p>
 <p>other libraries we will use include <code>rasterio</code> for reading and writing raster data, and <code>matplotlib</code> for visualizing the results.</p>
-<div id="e5c14d9c" class="cell" data-execution_count="2">
+<div id="e5c14d9c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This chunk imports the required libraries</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xdem</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rasterio.enums <span class="im">import</span> Resampling</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8e7113ee" class="cell" data-execution_count="3">
+<div id="8e7113ee" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if you completed tutorial 1, then the dem below is already downloaded and clipped to the study area. </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dem <span class="op">=</span> xdem.DEM(<span class="st">"data/derived/study_area_dem_clipped.tif"</span>) <span class="co"># load the DEM as an xdem object</span></span>
@@ -283,7 +283,7 @@ window.Quarto = {
 </div>
 <section id="exercise-1-load-and-plot-the-dem-using-xdems-built-in-plotting-function.-apply-colormap-terrain" class="level3">
 <h3 class="anchored" data-anchor-id="exercise-1-load-and-plot-the-dem-using-xdems-built-in-plotting-function.-apply-colormap-terrain"><strong>Exercise 1:</strong> load and plot the dem using xdem’s built-in plotting function. Apply colormap “terrain”</h3>
-<div id="9a97fbc9" class="cell" data-execution_count="4">
+<div id="9a97fbc9" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dem_utm.plot(cmap<span class="op">=</span>  <span class="st">"terrain"</span>, cbar_title<span class="op">=</span><span class="st">"Elevation (m)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -304,16 +304,9 @@ window.Quarto = {
 <blockquote class="blockquote">
 <p>For more info see the docs for xdem slope <a href="https://xdem.readthedocs.io/en/stable/terrain.html#slope">here</a></p>
 </blockquote>
-<div id="7141f7b7" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>slope <span class="op">=</span> dem_utm.slope()</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>slope.plot(cmap<span class="op">=</span><span class="st">"Reds"</span>, cbar_title<span class="op">=</span><span class="st">"Slope (degrees)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Tutorial2_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
+<div id="7141f7b7" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#slope = dem_utm.slope()</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#slope.plot(cmap="Reds", cbar_title="Slope (degrees)")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="exercise-3-calculate-aspect-using-xdems-built-in-function." class="level3">
@@ -322,32 +315,18 @@ window.Quarto = {
 <p>The aspect is based on the same variables as the slope, and thus varies similarly between the method of Horn (1981) (default) and that of Zevenbergen and Thorne (1987): <span class="math display">\[
 \theta = \arctan\left( \frac{p}{q} \right)
 \]</span> With <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> defined in the slope section.</p>
-<div id="9b8dba94" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>aspect <span class="op">=</span> dem_utm.aspect()</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>aspect.plot(cmap<span class="op">=</span><span class="st">"twilight"</span>, cbar_title<span class="op">=</span><span class="st">"Aspect (degrees)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Tutorial2_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
+<div id="9b8dba94" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#aspect = dem_utm.aspect()</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#aspect.plot(cmap="twilight", cbar_title="Aspect (degrees)")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="exercise-4-create-a-hillshade-using-xdems-built-in-function." class="level3">
 <h3 class="anchored" data-anchor-id="exercise-4-create-a-hillshade-using-xdems-built-in-function."><strong>Exercise 4</strong>: Create a hillshade using xdem’s built-in function.</h3>
 <p>The hillshade is a slope map, shaded by the aspect of the slope. With a westerly azimuth (a simulated sun coming from the west), all eastern slopes are slightly darker. This mode of shading the slopes often generates a map that is much more easily interpreted than the slope.</p>
 <p>The hillshade <span class="math inline">\(hs\)</span> is directly based on the slope <span class="math inline">\(\alpha\)</span> and aspect <span class="math inline">\(\theta\)</span> and also varies betwen the method of Horn (1981) and that of Zevenbergen and Thorne (1987), and is often scaled between 1 and 255:</p>
-<div id="8b868a9c" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>hillshade <span class="op">=</span> dem_utm.hillshade()</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>hillshade.plot(cmap<span class="op">=</span><span class="st">"Grays_r"</span>, cbar_title<span class="op">=</span><span class="st">"Hillshade"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Tutorial2_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
+<div id="8b868a9c" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#hillshade = dem_utm.hillshade()</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#hillshade.plot(cmap="Grays_r", cbar_title="Hillshade")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="exercise-5-caculate-curvature-3-ways-using-xdems-built-in-function." class="level3">
@@ -377,54 +356,26 @@ c = -100\frac{\left( h_{+0}+h_{-0}+h_{0+}+h_{0-}\right)-4h_{00}}{\Delta x \Delta
 <figcaption>profile curvature</figcaption>
 </figure>
 </div>
-<div id="78ed7ce4" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>curvature <span class="op">=</span> dem_utm.curvature()</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>curvature.plot(cmap<span class="op">=</span><span class="st">"RdGy_r"</span>, cbar_title<span class="op">=</span><span class="st">"Curvature (100 / m)"</span>, vmin<span class="op">=-</span><span class="dv">1</span>, vmax<span class="op">=</span><span class="dv">1</span>, interpolation<span class="op">=</span><span class="st">"antialiased"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Tutorial2_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div id="78ed7ce4" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#curvature = dem_utm.curvature()</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#curvature.plot(cmap="RdGy_r", cbar_title="Curvature (100 / m)", vmin=-1, vmax=1, interpolation="antialiased")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="24f26785" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#planform_curvature = dem_utm.planform_curvature()</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#planform_curvature.plot(cmap="RdGy_r", cbar_title="Planform curvature (100 / m)", vmin=-1, vmax=1, interpolation="antialiased")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div id="24f26785" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>planform_curvature <span class="op">=</span> dem_utm.planform_curvature()</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>planform_curvature.plot(cmap<span class="op">=</span><span class="st">"RdGy_r"</span>, cbar_title<span class="op">=</span><span class="st">"Planform curvature (100 / m)"</span>, vmin<span class="op">=-</span><span class="dv">1</span>, vmax<span class="op">=</span><span class="dv">1</span>, interpolation<span class="op">=</span><span class="st">"antialiased"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Tutorial2_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="b8e44019" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>profile_curvature <span class="op">=</span> dem_utm.profile_curvature()</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>profile_curvature.plot(cmap<span class="op">=</span><span class="st">"magma"</span>, cbar_title<span class="op">=</span><span class="st">"Profile curvature (100 / m)"</span>, vmin<span class="op">=-</span><span class="dv">1</span>, vmax<span class="op">=</span><span class="dv">1</span>, interpolation<span class="op">=</span><span class="st">"antialiased"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Tutorial2_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
+<div id="b8e44019" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#profile_curvature = dem_utm.profile_curvature()</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#profile_curvature.plot(cmap="magma", cbar_title="Profile curvature (100 / m)", vmin=-1, vmax=1, interpolation="antialiased")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="exercise-6-calculate-topographic-position-index-tpi-using-xdems-built-in-function." class="level2">
 <h2 class="anchored" data-anchor-id="exercise-6-calculate-topographic-position-index-tpi-using-xdems-built-in-function."><strong>Exercise 6:</strong> Calculate Topographic Position Index (TPI) using xdem’s built-in function.</h2>
 <p>The topographic position index (TPI) is a metric of slope position, described in Weiss (2001), that corresponds to the difference of the elevation of a central pixel with the average of that of neighbouring pixels. Its unit is that of the DEM (typically meters) and it can be computed for any window size (default 3x3 pixels).</p>
 <p>We will use a window size of 15x15 pixels to capture larger scale topographic features.</p>
-<div id="d33feb30" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tpi <span class="op">=</span> dem_utm.topographic_position_index(window_size<span class="op">=</span><span class="dv">15</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>tpi.plot(cmap<span class="op">=</span><span class="st">"Spectral"</span>, cbar_title<span class="op">=</span><span class="st">"Topographic position index (m)"</span>, vmin<span class="op">=-</span><span class="dv">5</span>, vmax<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Tutorial2_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
+<div id="d33feb30" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#tpi = dem_utm.topographic_position_index(window_size=15)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#tpi.plot(cmap="Spectral", cbar_title="Topographic position index (m)", vmin=-5, vmax=5)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="exercise-7-calculate-the-terrain-ruggedness-index-tri-using-xdems-built-in-function." class="level2">
@@ -432,31 +383,17 @@ c = -100\frac{\left( h_{+0}+h_{-0}+h_{0+}+h_{0-}\right)-4h_{00}}{\Delta x \Delta
 <p>The terrain ruggedness index (TRI) is a metric of terrain ruggedness, based on cumulated differences in elevation between a central pixel and its surroundings. Its unit is that of the DEM (typically meters) and it can be computed for any window size (default 3x3 pixels).</p>
 <p>For topography (default), the method of Riley et al.&nbsp;(1999) is generally used, where the TRI is computed by the squareroot of squared differences with neighbouring pixels</p>
 <p>for bathymetry, the method of Wilson et al.&nbsp;(2007) is generally used, where the TRI is defined by the mean absolute difference with neighbouring pixels</p>
-<div id="a46e983b" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tri <span class="op">=</span> dem_utm.terrain_ruggedness_index(window_size<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>tri.plot(cmap<span class="op">=</span><span class="st">"magma"</span>, cbar_title<span class="op">=</span><span class="st">"Terrain ruggedness index (m)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Tutorial2_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
+<div id="a46e983b" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#tri = dem_utm.terrain_ruggedness_index(window_size=3)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#tri.plot(cmap="magma", cbar_title="Terrain ruggedness index (m)")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="exercsise-8-calculate-the-fractal-roughness-using-xdems-built-in-function." class="level2">
 <h2 class="anchored" data-anchor-id="exercsise-8-calculate-the-fractal-roughness-using-xdems-built-in-function."><strong>Exercsise 8:</strong> Calculate the fractal roughness using xdem’s built-in function.</h2>
 <p>The fractal roughness is a metric of terrain ruggedness based on the local fractal dimension estimated by the volume box-counting method of Taud and Parrot (2005). The fractal roughness is computed by estimating the fractal dimension in 3D space, for a local window centered on the DEM pixels. Its unit is that of a dimension, and is always between 1 (dimension of a line in 3D space) and 3 (dimension of a cube in 3D space). It can only be computed on window sizes larger than 5x5 pixels, and defaults to 13x13.</p>
-<div id="811916cd" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fractal_roughness <span class="op">=</span> dem_utm.fractal_roughness()</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>fractal_roughness.plot(cmap<span class="op">=</span><span class="st">"Reds"</span>, cbar_title<span class="op">=</span><span class="st">"Fractal roughness (dimensions)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Tutorial2_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
+<div id="811916cd" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fractal_roughness = dem_utm.fractal_roughness()</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#fractal_roughness.plot(cmap="Reds", cbar_title="Fractal roughness (dimensions)")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
