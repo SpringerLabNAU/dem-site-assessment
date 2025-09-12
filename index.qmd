@@ -1,0 +1,17 @@
+---
+title: "DEM Site Assessment"
+---
+
+Welcome! Use the sidebar to open the **Slides** or **Tutorials**.
+
+- **Slides** → overview lecture on UAV-based SfM and DEM processing
+- **Tutorials** → step-by-step notebooks for data access, clipping, xdem reprojection, etc.
+
+
+## Run the tutorials yourself using binder environment: 
+
+- **Tutorial 1**: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/SpringerLabNAU/dem-site-assessment/HEAD?urlpath=%2Fdoc%2Ftree%2FTutorial1.ipynb)
+
+- **Tutorial 2**: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/SpringerLabNAU/dem-site-assessment/HEAD?urlpath=%2Fdoc%2Ftree%2FTutorial2.ipynb)
+
+

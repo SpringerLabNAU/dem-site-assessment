@@ -1,16 +1,33 @@
 project:
   type: website
+  output-dir: _site
 
 website:
   title: "DEM Site Assessment"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - text: "Home"
+        file: index.qmd
+      - section: "Slides"
+        contents:
+          - text: "Karst Landscape Characterization"
+            file: slides/Karst-Landscape-Characterization.qmd
+          - text: "UAV-based Structure from Motion"
+            file: slides/UAV-SfM.qmd
+      - section: "Tutorials"
+        contents:
+          - text: "Tutorial 1"
+            file: Tutorial1.ipynb
+          - text: "Tutorial 2"
+            file: Tutorial2.ipynb
 
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
+
+execute:
+  freeze: auto   # don’t re-run notebooks on CI unless code changes

@@ -1,0 +1,170 @@
+---
+title: "Karst Landscape Characterization"
+subtitle: "Why it matters • What it is • Mapping lineaments & sinkholes"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+    incremental: true
+    hash: true
+---
+
+# Why Karst Characterization?
+
+- ~20% of global land surface shows karst features; many aquifers are karstic.
+- Rapid, anisotropic flow → **flashy recharge**, **contaminant vulnerability**, **sinkhole hazards**.
+- Management needs **spatially explicit** maps: recharge zones, flow paths, hazard areas.
+- Goal: reproducible workflow to **identify lineaments** & **delineate sinkholes** and derive metrics (depth, volume, density).
+
+::: notes
+Motivation: water security, infrastructure risk, targeted recharge enhancement (ORE), and protection zones.
+:::
+
+---
+
+# What is “Karst Characterization”?
+
+- Integrated mapping of **surface & subsurface indicators**:
+  - **Sinkholes** (dolines), dry valleys, uvalas, caves/springs
+  - **Lineaments** (fractures/joints/faults) guiding groundwater flow
+- Products:
+  - **Inventories** (points/polygons/lines), **density maps**, **terrain derivatives**
+  - Suitability/recharge potential layers for decision support
+
+---
+
+# Datasets
+
+- **Elevation**: 3DEP (10–30 m) or local LiDAR (≤1 m)
+- **Imagery**: NAIP/Planet/Sentinel-2 (false color helpful)
+- **Bedrock/Soils**: geology units, GLHYMPS, SSURGO
+- **Hydrography**: NHD springs/streams; field GPS
+- Optional: **UAV-SfM** for cm-scale morphology (lecture #2)
+
+---
+
+# DEM Preprocessing
+
+- Reproject to target CRS (e.g., UTM 12N)
+- Fill small artifacts conservatively (avoid erasing true depressions)
+- Derive **slope**, **aspect**, **curvature**, **TPI/TRI**
+- Multi-scale analysis (window sizes tuned to expected sinkhole diameter)
+
+---
+
+# Mapping Sinkholes (Raster-first)
+
+1. **Closed-depression detection**
+   - DEM fill vs. original → depth raster (Cut/Fill logic)
+   - Threshold minimum depth & minimum area
+2. **Morphology filters**
+   - TPI/TRI, curvature (concavity), circularity metrics
+3. **Vectorization**
+   - Raster → polygons; clean with dissolve/simplify
+4. **Attributes**
+   - Depth, area, volume, elongation, circularity (4πA/P²)
+
+::: notes
+Use multiple scales (e.g., 5–50 m radii) to capture different doline sizes; validate with high-res data or field checks.
+:::
+
+---
+
+# Mapping Lineaments (Raster/Imagery)
+
+**DEM-based (shaded relief):**
+- Multi-azimuth hillshades; combine (min/mean)
+- Edge detection (Canny), non-max suppression
+- Hough Transform for straight segments; merge/extend with angular tolerance
+
+**Optical imagery (optional):**
+- Structural traces in bare or sparse vegetation
+- PCA/band ratios; NIR enhances lithologic contrasts
+
+**Postprocess:**
+- Snap/merge segments, remove short/noisy lines
+- Compute **orientation** (rose diagrams), **length density** (km/km²)
+
+---
+
+# Accuracy & Validation
+
+- **Sinkholes**: compare to validated inventories or field points
+  - Metrics: precision/recall/F1; positional & shape similarity
+- **Lineaments**: compare to mapped faults/joints where available
+  - Angular deviation; spatial coincidence; density correlation
+- Sensitivity analysis over thresholds (depth, min area, Canny/Hough params)
+
+---
+
+# Typical Pitfalls
+
+- Over-filling DEM removes real dolines
+- Shadows/vegetation hide edges; water surfaces confuse matchers
+- Anthropogenic depressions (quarries, tanks) → false positives
+- Scale mismatch: pick window sizes that match geomorphic signal
+- CRS/units mix-ups (meters vs degrees)
+
+---
+
+# Minimal Workflow (Concept)
+
+1. Acquire & preprocess DEM (reproject, gentle fill)
+2. Derive terrain attributes (slope, curvature, TPI/TRI)
+3. **Sinkholes**: depression depth → threshold → polygons → metrics
+4. **Lineaments**: multi-azimuth hillshade → edges → Hough → merge → stats
+5. Densities/heatmaps; MCDA layers for recharge/hazard
+6. Validate; tune thresholds; document parameters & uncertainty
+
+---
+
+# Outputs & Metrics
+
+- **Sinkholes**: polygon inventory with depth, area, volume, circularity
+- **Lineaments**: polyline set with azimuth, length; density rasters
+- **Summaries**: per-HUC or management unit
+- **Maps**: suitability/recharge potential, hazard zones
+
+---
+
+# Example Parameters (Starting Points)
+
+- **Sinkholes**
+  - Min depth: 0.5–2 m (res-dependent)
+  - Min area: 100–1000 m² (context-dependent)
+  - Circularity: ≥ 0.4–0.6
+- **Lineaments**
+  - Canny σ: 1.0; low/high: ~0.01/1.0 (rel. to shaded range)
+  - Hough: min length 50–200 m, gap 20–50 m, angle tol. 5–10°
+
+::: notes
+Tune to your DEM resolution and expected feature size; keep a parameter log for reproducibility.
+:::
+
+---
+
+# Toward Decision Support
+
+- Combine layers (weights/MCDA) for **Opportunistic Recharge Enhancement**
+- Prioritize corridors where:
+  - Sinkhole density is high and dolines are deep
+  - Lineament density/orientation aligns with recharge pathways
+  - Geology/soil support high permeability
+- Flag conflicts: infrastructure, contamination sources, protected areas
+
+---
+
+# Next Lecture (UAV-SfM)
+
+- cm-scale morphology of sinkholes
+- Depth/volume via high-res DEMs
+- Change detection (DoD) after storms/management actions
+
+---
+
+# Acknowledgments & Notes
+
+- This deck summarizes standard karst/geomorphometry practice adapted to DEM workflows.
+- Always validate with field observations where feasible.
+- Document versions of data, parameters, and CRS for reproducibility.

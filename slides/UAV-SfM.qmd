@@ -1,0 +1,46 @@
+---
+title: "UAV-based Structure from Motion for Sinkhole Characterization"
+format:
+  revealjs:
+    theme: moon
+    slide-number: true
+    transition: fade
+---
+
+# UAV-based SfM
+Why use SfM for mapping sinkhole characteristics?
+
+---
+
+## What is SfM?
+- 3D from overlapping 2D images
+- Camera poses + sparse cloud → MVS dense cloud → DEM/orthomosaic
+
+---
+
+## Flight & Data
+- ≥75–85% overlap; nadir + oblique
+- GCPs or RTK/PPK
+- Consistent exposure; avoid harsh shadows
+
+---
+
+## Products
+- DEM/DSM, orthomosaic, point cloud, mesh
+- Derivatives: slope/aspect, contours, DoD (change)
+
+---
+
+## Workflow Highlights
+1. Plan & fly
+2. Align images (tie points, bundle adjustment)
+3. Densify (MVS)
+4. Rasterize (DEM/DSM, ortho)
+5. QC (RMSE vs checkpoints)
+
+---
+
+## For Sinkholes
+- Delineate rims/depressions
+- Metrics: depth, volume (cut/fill), slope, curvature
+- Integrate with lineaments & karst layers
