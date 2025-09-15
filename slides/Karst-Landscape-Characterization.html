@@ -28,7 +28,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-0fde88a82f0356838740f155f1088782.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-99eeafcedac04850354b682963cedae3.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -44,6 +44,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -133,255 +134,234 @@
 </div>
 
 </section>
-<section>
-<section id="why-karst-characterization" class="title-slide slide level1 center">
-<h1>Why Karst Characterization?</h1>
+<section id="why-karst-characterization" class="slide level2 smaller">
+<h2>Why Karst Characterization?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
-<li class="fragment">~20% of global land surface shows karst features; many aquifers are karstic.</li>
-<li class="fragment">Rapid, anisotropic flow → <strong>flashy recharge</strong>, <strong>contaminant vulnerability</strong>, <strong>sinkhole hazards</strong>.</li>
-<li class="fragment">Management needs <strong>spatially explicit</strong> maps: recharge zones, flow paths, hazard areas.</li>
-<li class="fragment">Goal: reproducible workflow to <strong>identify lineaments</strong> &amp; <strong>delineate sinkholes</strong> and derive metrics (depth, volume, density).</li>
+<li>~20% of global land surface shows karst features; many aquifers are karstic.</li>
+<li>Rapid, anisotropic flow → <strong>flashy recharge</strong>, <strong>contaminant vulnerability</strong>, <strong>sinkhole hazards</strong>.</li>
+<li>Management needs <strong>spatially explicit</strong> maps: recharge zones, flow paths, hazard areas.</li>
+<li>Goal: reproducible workflow to <strong>identify lineaments</strong> &amp; <strong>delineate sinkholes</strong> and derive metrics (depth, volume, density).</li>
 </ul>
-<aside class="notes">
-<p>Motivation: water security, infrastructure risk, targeted recharge enhancement (ORE), and protection zones.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+</div><div class="column" style="width:50%;">
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/4/40/KarstterrainUSGS.jpg" alt="Karst Landscape"> <img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Carbonate-outcrops_world.jpg/500px-Carbonate-outcrops_world.jpg" alt="Global Karst Extent"></p>
+</div></div>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="what-is-karst-characterization" class="title-slide slide level1 center">
-<h1>What is “Karst Characterization”?</h1>
+<section id="what-is-karst-characterization" class="slide level2">
+<h2>What is “Karst Characterization”?</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <ul>
-<li class="fragment">Integrated mapping of <strong>surface &amp; subsurface indicators</strong>:
+<li>Integrated mapping of <strong>surface &amp; subsurface indicators</strong>:
 <ul>
-<li class="fragment"><strong>Sinkholes</strong> (dolines), dry valleys, uvalas, caves/springs</li>
-<li class="fragment"><strong>Lineaments</strong> (fractures/joints/faults) guiding groundwater flow</li>
+<li><strong>Sinkholes</strong> (dolines), dry valleys, uvalas, caves/springs</li>
+<li><strong>Lineaments</strong> (fractures/joints/faults) guiding groundwater flow</li>
+<li><strong>Dye Traces</strong> Identify flowpaths of water from sinks to springs, caves, streams</li>
 </ul></li>
-<li class="fragment">Products:
+<li>Products:
 <ul>
-<li class="fragment"><strong>Inventories</strong> (points/polygons/lines), <strong>density maps</strong>, <strong>terrain derivatives</strong></li>
-<li class="fragment">Suitability/recharge potential layers for decision support</li>
+<li><strong>Inventories</strong> (points/polygons/lines), <strong>density maps</strong>, <strong>terrain derivatives</strong></li>
+<li>Suitability/recharge potential layers for decision support</li>
 </ul></li>
 </ul>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://grandcanyonconservancy.nyc3.cdn.digitaloceanspaces.com/production/general/Fig1.jpg"></p>
+<figcaption>Karst Dye Trace</figcaption>
+</figure>
+</div>
+</div></div>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="datasets" class="title-slide slide level1 center">
-<h1>Datasets</h1>
+<section id="what-is-karst-characterization-1" class="slide level2">
+<h2>What is “Karst Characterization”?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images\kaibabSinks.png"></p>
+<figcaption>Sinks</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://www.lyellcollection.org/cms/10.1144/SP466.5/asset/4388db97-4438-447a-aa51-d2d92300e81b/assets/graphic/sp466-17-055f09.jpeg"></p>
+<figcaption>Faults/Lineaments</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="datasets" class="slide level2">
+<h2>Datasets</h2>
 <ul>
-<li class="fragment"><strong>Elevation</strong>: 3DEP (10–30 m) or local LiDAR (≤1 m)</li>
-<li class="fragment"><strong>Imagery</strong>: NAIP/Planet/Sentinel-2 (false color helpful)</li>
-<li class="fragment"><strong>Bedrock/Soils</strong>: geology units, GLHYMPS, SSURGO</li>
-<li class="fragment"><strong>Hydrography</strong>: NHD springs/streams; field GPS</li>
-<li class="fragment">Optional: <strong>UAV-SfM</strong> for cm-scale morphology (lecture #2)</li>
+<li><strong>Elevation</strong>: 3DEP (10–30 m) or local LiDAR (≤1 m)</li>
+<li><strong>Imagery</strong>: NAIP/Planet/Sentinel-2 (false color helpful)</li>
+<li><strong>Bedrock/Soils</strong>: geology units, GLHYMPS, SSURGO</li>
+<li><strong>Hydrography</strong>: NHD springs/streams; field GPS</li>
+<li>Optional: <strong>UAV-SfM</strong> for cm-scale morphology (lecture #2)</li>
 </ul>
+<p><img data-src="https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/thumbnails/image/3DEP%20logo%20-%20Aug%209%2C%202018.png?itok=1HtSyz5Q" alt="3DEP"> <img data-src="https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/media/images/Hillshade_Hydrography_legend.png?itok=SVqt3Z7N" alt="NHD"> <img data-src="https://me.smenet.org/wp-content/uploads/sites/3/2025/08/USGS-Map.jpg" alt="National Geologic Map Compilations"> —</p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="dem-preprocessing" class="title-slide slide level1 center">
-<h1>DEM Preprocessing</h1>
+<section id="dem-preprocessing" class="slide level2">
+<h2>DEM Preprocessing</h2>
 <ul>
-<li class="fragment">Reproject to target CRS (e.g., UTM 12N)</li>
-<li class="fragment">Fill small artifacts conservatively (avoid erasing true depressions)</li>
-<li class="fragment">Derive <strong>slope</strong>, <strong>aspect</strong>, <strong>curvature</strong>, <strong>TPI/TRI</strong></li>
-<li class="fragment">Multi-scale analysis (window sizes tuned to expected sinkhole diameter)</li>
+<li>Reproject to target CRS (e.g., UTM 12N)</li>
+<li>Fill small artifacts conservatively (avoid erasing true depressions)</li>
+<li>Derive <strong>slope</strong>, <strong>aspect</strong>, <strong>curvature</strong>, <strong>TPI/TRI</strong></li>
+<li>Multi-scale analysis (window sizes tuned to expected sinkhole diameter) <img data-src="https://xdem.readthedocs.io/en/stable/_images/sphx_glr_plot_terrain_attributes_001.png" alt="Terrain Attributes"></li>
 </ul>
+<p>:::</p>
+<p>Notes: <em>This is what we did (will do) in the lab exercise</em> ::: —</p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="mapping-sinkholes-raster-first" class="title-slide slide level1 center">
-<h1>Mapping Sinkholes (Raster-first)</h1>
-<ol type="1">
-<li class="fragment"><strong>Closed-depression detection</strong>
+<section id="mapping-sinkholes-raster-first" class="slide level2 smaller">
+<h2>Mapping Sinkholes (Raster-first)</h2>
 <ul>
-<li class="fragment">DEM fill vs.&nbsp;original → depth raster (Cut/Fill logic)</li>
-<li class="fragment">Threshold minimum depth &amp; minimum area</li>
-</ul></li>
-<li class="fragment"><strong>Morphology filters</strong>
+<li><strong>Closed-depression detection</strong>
 <ul>
-<li class="fragment">TPI/TRI, curvature (concavity), circularity metrics</li>
+<li>DEM fill vs.&nbsp;original → depth raster (Cut/Fill logic)</li>
+<li>Threshold minimum depth &amp; minimum area</li>
 </ul></li>
-<li class="fragment"><strong>Vectorization</strong>
+<li><strong>Morphology filters</strong>
 <ul>
-<li class="fragment">Raster → polygons; clean with dissolve/simplify</li>
+<li>TPI/TRI, curvature (concavity), circularity metrics</li>
 </ul></li>
-<li class="fragment"><strong>Attributes</strong>
+<li><strong>Vectorization</strong>
 <ul>
-<li class="fragment">Depth, area, volume, elongation, circularity (4πA/P²)</li>
+<li>Raster → polygons; clean with dissolve/simplify</li>
 </ul></li>
-</ol>
-<aside class="notes">
-<p>Use multiple scales (e.g., 5–50 m radii) to capture different doline sizes; validate with high-res data or field checks.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<li><strong>Attributes</strong>
+<ul>
+<li>Depth, area, volume, elongation, circularity (4πA/P²)</li>
+</ul></li>
+</ul>
+<p><img data-src="images\sink-detection-method.png"> <img data-src="images\tpi_sink_detection.png"></p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="mapping-lineaments-rasterimagery" class="title-slide slide level1 center">
-<h1>Mapping Lineaments (Raster/Imagery)</h1>
+<section id="mapping-lineaments-rasterimagery" class="slide level2">
+<h2>Mapping Lineaments (Raster/Imagery)</h2>
 <p><strong>DEM-based (shaded relief):</strong> - Multi-azimuth hillshades; combine (min/mean) - Edge detection (Canny), non-max suppression - Hough Transform for straight segments; merge/extend with angular tolerance</p>
 <p><strong>Optical imagery (optional):</strong> - Structural traces in bare or sparse vegetation - PCA/band ratios; NIR enhances lithologic contrasts</p>
 <p><strong>Postprocess:</strong> - Snap/merge segments, remove short/noisy lines - Compute <strong>orientation</strong> (rose diagrams), <strong>length density</strong> (km/km²)</p>
+<p><img data-src="images\Lin_detection_ex.jpg" alt="Lineament Detection"> <img data-src="images\lin_density_ex.png" alt="Lineament Density"></p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="accuracy-validation" class="title-slide slide level1 center">
-<h1>Accuracy &amp; Validation</h1>
+<section id="typical-pitfalls" class="slide level2">
+<h2>Typical Pitfalls</h2>
 <ul>
-<li class="fragment"><strong>Sinkholes</strong>: compare to validated inventories or field points
-<ul>
-<li class="fragment">Metrics: precision/recall/F1; positional &amp; shape similarity</li>
-</ul></li>
-<li class="fragment"><strong>Lineaments</strong>: compare to mapped faults/joints where available
-<ul>
-<li class="fragment">Angular deviation; spatial coincidence; density correlation</li>
-</ul></li>
-<li class="fragment">Sensitivity analysis over thresholds (depth, min area, Canny/Hough params)</li>
+<li>Differing definitions of lineaments</li>
+<li>data scale/resolution</li>
+<li>Not all lineaments visible at surface</li>
+<li>some lineaments are result of modern geomorphologic processes not underlying geology</li>
+<li>fill technique only works with closed sinks</li>
+<li>False sinks, and lineaments</li>
+<li>Anthropogenic depressions (quarries, tanks) → false positives</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="typical-pitfalls" class="title-slide slide level1 center">
-<h1>Typical Pitfalls</h1>
-<ul>
-<li class="fragment">Over-filling DEM removes real dolines</li>
-<li class="fragment">Shadows/vegetation hide edges; water surfaces confuse matchers</li>
-<li class="fragment">Anthropogenic depressions (quarries, tanks) → false positives</li>
-<li class="fragment">Scale mismatch: pick window sizes that match geomorphic signal</li>
-<li class="fragment">CRS/units mix-ups (meters vs degrees)</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="minimal-workflow-concept" class="title-slide slide level1 center">
-<h1>Minimal Workflow (Concept)</h1>
+<section id="minimal-workflow-concept" class="slide level2 scrollable">
+<h2>Minimal Workflow (Concept)</h2>
 <ol type="1">
-<li class="fragment">Acquire &amp; preprocess DEM (reproject, gentle fill)</li>
-<li class="fragment">Derive terrain attributes (slope, curvature, TPI/TRI)</li>
-<li class="fragment"><strong>Sinkholes</strong>: depression depth → threshold → polygons → metrics</li>
-<li class="fragment"><strong>Lineaments</strong>: multi-azimuth hillshade → edges → Hough → merge → stats</li>
-<li class="fragment">Densities/heatmaps; MCDA layers for recharge/hazard</li>
-<li class="fragment">Validate; tune thresholds; document parameters &amp; uncertainty</li>
+<li>Acquire &amp; preprocess DEM (reproject, gentle fill)</li>
+<li>Derive terrain attributes (slope, curvature, TPI/TRI)</li>
+<li><strong>Sinkholes</strong>: depression depth → threshold → polygons → metrics</li>
+<li><strong>Lineaments</strong>: multi-azimuth hillshade → edges → Hough → merge → stats</li>
+<li>Densities/heatmaps; MCDA layers for recharge/hazard</li>
+<li>Validate; tune thresholds; document parameters &amp; uncertainty</li>
 </ol>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="outputs-metrics" class="title-slide slide level1 center">
-<h1>Outputs &amp; Metrics</h1>
+<section id="outputs-end-uses" class="slide level2">
+<h2>Outputs &amp; End-uses</h2>
 <ul>
-<li class="fragment"><strong>Sinkholes</strong>: polygon inventory with depth, area, volume, circularity</li>
-<li class="fragment"><strong>Lineaments</strong>: polyline set with azimuth, length; density rasters</li>
-<li class="fragment"><strong>Summaries</strong>: per-HUC or management unit</li>
-<li class="fragment"><strong>Maps</strong>: suitability/recharge potential, hazard zones</li>
+<li><strong>Sinkholes</strong>: polygon inventory with depth, area, volume, circularity</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://www.researchgate.net/publication/323343024/figure/fig5/AS:657836979789825@1533851966654/Map-showing-sinkhole-locations-dots-and-densities-number-of-sinkholes-per-km-2.png"></p>
+<figcaption>Sinkhole Density Maps</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Lineaments</strong>: polyline set with azimuth, length; density rasters</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images\AZLineaments.png"></p>
+<figcaption>Arizona Lineaments</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images\AZLinDen.png"></p>
+<figcaption>Arizona Lineament Density</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Dye Trace</strong>: polyline from introduction point to detection point</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://grandcanyonconservancy.nyc3.cdn.digitaloceanspaces.com/production/general/Fig1.jpg"></p>
+<figcaption>Dye Trace- Flowpath Map</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Maps</strong>: suitability/recharge potential, hazard zones</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://nhess.copernicus.org/articles/22/1591/2022/nhess-22-1591-2022-avatar-web.png"></p>
+<figcaption>Vulnerability Map</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images\fig-sankey-sbii.png"></p>
+<figcaption>Sankey Diagram</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images\fig-pk-sbii.jpg"></p>
+<figcaption>Map of Recharge potential</figcaption>
+</figure>
+</div>
+</section>
+<section id="going-further" class="slide level2">
+<h2>Going Further</h2>
+<p>Once a database of validated sinkholes and lineaments are created:</p>
+<p><strong>Utilize the database for training a Deep Learning Model to Identify Sinks</strong></p>
+
+<img data-src="https://pub.mdpi-res.com/remotesensing/remotesensing-16-02264/article_deploy/html/images/remotesensing-16-02264-g003.png?1720168922" class="r-stretch quarto-figure-center"><p class="caption">Image Segmentation</p><p><strong>Use Terrain attributes as input to DL model.</strong></p>
+<ul>
+<li>increase ability to automate karst landscape Characterization</li>
+<li>identify sinks that are not closed or subtle lineaments (hard for current tools)</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="example-parameters-starting-points" class="title-slide slide level1 center">
-<h1>Example Parameters (Starting Points)</h1>
+<section id="toward-decision-support" class="slide level2">
+<h2>Toward Decision Support</h2>
 <ul>
-<li class="fragment"><strong>Sinkholes</strong>
+<li>Combine layers (weights/MCDA) for <strong>Opportunistic Recharge Enhancement</strong></li>
+<li>Prioritize corridors where:
 <ul>
-<li class="fragment">Min depth: 0.5–2 m (res-dependent)</li>
-<li class="fragment">Min area: 100–1000 m² (context-dependent)</li>
-<li class="fragment">Circularity: ≥ 0.4–0.6</li>
+<li>Sinkhole density is high and dolines are deep</li>
+<li>Lineament density/orientation aligns with recharge pathways</li>
+<li>Geology/soil support high permeability</li>
 </ul></li>
-<li class="fragment"><strong>Lineaments</strong>
-<ul>
-<li class="fragment">Canny σ: 1.0; low/high: ~0.01/1.0 (rel. to shaded range)</li>
-<li class="fragment">Hough: min length 50–200 m, gap 20–50 m, angle tol. 5–10°</li>
-</ul></li>
+<li>Flag conflicts: infrastructure, contamination sources, protected areas</li>
 </ul>
-<aside class="notes">
-<p>Tune to your DEM resolution and expected feature size; keep a parameter log for reproducibility.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+<p><img data-src="images\Thining_suit.jpg" alt="Suitability for Thinning to enhance Recharge in Ponderosa Pine Forests"> <img data-src="images\fig-pk-sbii.jpg" alt="Map of Recharge potential"> —</p>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="toward-decision-support" class="title-slide slide level1 center">
-<h1>Toward Decision Support</h1>
+<section id="next-lecture-uav-sfm" class="slide level2">
+<h2>Next Lecture (UAV-SfM)</h2>
 <ul>
-<li class="fragment">Combine layers (weights/MCDA) for <strong>Opportunistic Recharge Enhancement</strong></li>
-<li class="fragment">Prioritize corridors where:
-<ul>
-<li class="fragment">Sinkhole density is high and dolines are deep</li>
-<li class="fragment">Lineament density/orientation aligns with recharge pathways</li>
-<li class="fragment">Geology/soil support high permeability</li>
-</ul></li>
-<li class="fragment">Flag conflicts: infrastructure, contamination sources, protected areas</li>
+<li>cm-scale morphology of sinkholes</li>
 </ul>
 </section>
-<section class="slide level2">
-
-</section></section>
-<section>
-<section id="next-lecture-uav-sfm" class="title-slide slide level1 center">
-<h1>Next Lecture (UAV-SfM)</h1>
+<section id="acknowledgments-notes" class="slide level2">
+<h2>Acknowledgments &amp; Notes</h2>
 <ul>
-<li class="fragment">cm-scale morphology of sinkholes</li>
-<li class="fragment">Depth/volume via high-res DEMs</li>
-<li class="fragment">Change detection (DoD) after storms/management actions</li>
-</ul>
-</section>
-<section class="slide level2">
-
-</section></section>
-<section id="acknowledgments-notes" class="title-slide slide level1 center">
-<h1>Acknowledgments &amp; Notes</h1>
-<ul>
-<li class="fragment">This deck summarizes standard karst/geomorphometry practice adapted to DEM workflows.</li>
-<li class="fragment">Always validate with field observations where feasible.</li>
-<li class="fragment">Document versions of data, parameters, and CRS for reproducibility.</li>
+<li>This deck summarizes standard karst/geomorphometry practice adapted to DEM workflows.</li>
+<li>Always validate with field observations where feasible.</li>
+<li>Document versions of data, parameters, and CRS for reproducibility.</li>
 </ul>
 
 
@@ -422,7 +402,7 @@
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: false,
@@ -547,7 +527,7 @@
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'fade',
+        transition: 'none',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',

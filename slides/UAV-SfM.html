@@ -44,6 +44,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -136,7 +137,8 @@
 <section id="uav-based-sfm" class="title-slide slide level1 center">
 <h1>UAV-based SfM</h1>
 <p>Why use SfM for mapping sinkhole characteristics?</p>
-</section>
+
+<img data-src="https://www.google.com/url?sa=i&amp;url=https%3A%2F%2Fwww.flyeye.io%2Fdrone-acronym-sfm%2F&amp;psig=AOvVaw0nQy1eu1hy-zRaLCkC6hgc&amp;ust=1758048283185000&amp;source=images&amp;cd=vfe&amp;opi=89978449&amp;ved=0CBYQjRxqFwoTCNi_4a62248DFQAAAAAdAAAAABAE" class="r-stretch"></section>
 <section id="what-is-sfm" class="slide level2">
 <h2>What is SfM?</h2>
 <ul>
@@ -159,7 +161,7 @@
 <li>Derivatives: slope/aspect, contours, DoD (change)</li>
 </ul>
 </section>
-<section id="workflow-highlights" class="slide level2">
+<section id="workflow-highlights" class="slide level2 scrollable">
 <h2>Workflow Highlights</h2>
 <ol type="1">
 <li>Plan &amp; fly</li>
@@ -215,7 +217,7 @@
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: false,
