@@ -9,3 +9,6 @@ tutorial on downloading dem's and analyzing the topography
 
 ![](Screenshot%202025-09-15%20140535.png)
 ![](Screenshot%202025-09-15%20140615.png)
+
+
+[DEM LINK] (https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/historical/n35w111/USGS_13_n35w111_20210301.tif)
