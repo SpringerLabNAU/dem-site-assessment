@@ -44,11 +44,22 @@
     ]
   },
   {
+    "objectID": "slides/UAV-SfM.html#uav-based-sfm",
+    "href": "slides/UAV-SfM.html#uav-based-sfm",
+    "title": "UAV-based Structure from Motion for Sinkhole Characterization",
+    "section": "UAV-based SfM",
+    "text": "UAV-based SfM\nWhy use SfM for mapping sinkhole characteristics?",
+    "crumbs": [
+      "Slides",
+      "UAV-based Structure from Motion"
+    ]
+  },
+  {
     "objectID": "slides/UAV-SfM.html#what-is-sfm",
     "href": "slides/UAV-SfM.html#what-is-sfm",
     "title": "UAV-based Structure from Motion for Sinkhole Characterization",
     "section": "What is SfM?",
-    "text": "What is SfM?\n\n3D from overlapping 2D images\nCamera poses + sparse cloud → MVS dense cloud → DEM/orthomosaic",
+    "text": "What is SfM?\n\n\n\n3D from overlapping 2D images\nCamera poses + sparse cloud → MVS dense cloud → DEM/orthomosaic\n\n\n\n\n\nPoint Cloud",
     "crumbs": [
       "Slides",
       "UAV-based Structure from Motion"
@@ -59,7 +70,7 @@
     "href": "slides/UAV-SfM.html#flight-data",
     "title": "UAV-based Structure from Motion for Sinkhole Characterization",
     "section": "Flight & Data",
-    "text": "Flight & Data\n\n≥75–85% overlap; nadir + oblique\nGCPs or RTK/PPK\nConsistent exposure; avoid harsh shadows",
+    "text": "Flight & Data\n\n\n\n≥75–85% overlap; nadir + oblique\nGCPs or RTK/PPK\nConsistent exposure; avoid harsh shadows",
     "crumbs": [
       "Slides",
       "UAV-based Structure from Motion"
@@ -93,6 +104,17 @@
     "title": "UAV-based Structure from Motion for Sinkhole Characterization",
     "section": "For Sinkholes",
     "text": "For Sinkholes\n\nDelineate rims/depressions\nMetrics: depth, volume (cut/fill), slope, curvature\nIntegrate with lineaments & karst layers",
+    "crumbs": [
+      "Slides",
+      "UAV-based Structure from Motion"
+    ]
+  },
+  {
+    "objectID": "slides/UAV-SfM.html#conclusion",
+    "href": "slides/UAV-SfM.html#conclusion",
+    "title": "UAV-based Structure from Motion for Sinkhole Characterization",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nWe want characterize the karst landscapes of Arizona\nWe want to identify all the sinkholes and characterize theme\nSfM is a fast and accurate way to survey sinkholes\nMuch more work is done on the backend to measure and categorize sinkholes after point cloud aquisition\nThere are many commercial and open source tools that can help with SfM",
     "crumbs": [
       "Slides",
       "UAV-based Structure from Motion"

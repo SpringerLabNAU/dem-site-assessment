@@ -133,26 +133,40 @@
 </div>
 
 </section>
-<section>
-<section id="uav-based-sfm" class="title-slide slide level1 center">
-<h1>UAV-based SfM</h1>
+<section id="uav-based-sfm" class="slide level2">
+<h2>UAV-based SfM</h2>
 <p>Why use SfM for mapping sinkhole characteristics?</p>
 
-<img data-src="https://www.google.com/url?sa=i&amp;url=https%3A%2F%2Fwww.flyeye.io%2Fdrone-acronym-sfm%2F&amp;psig=AOvVaw0nQy1eu1hy-zRaLCkC6hgc&amp;ust=1758048283185000&amp;source=images&amp;cd=vfe&amp;opi=89978449&amp;ved=0CBYQjRxqFwoTCNi_4a62248DFQAAAAAdAAAAABAE" class="r-stretch"></section>
+<img data-src="https://dl.acm.org/cms/attachment/4d59b96d-cabc-46c4-b0f6-be820d3ba4ee/jocch-21-0026-f05.jpg" class="r-stretch"></section>
 <section id="what-is-sfm" class="slide level2">
 <h2>What is SfM?</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
 <ul>
 <li>3D from overlapping 2D images</li>
 <li>Camera poses + sparse cloud → MVS dense cloud → DEM/orthomosaic</li>
 </ul>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images\point_cloud.gif"></p>
+<figcaption>Point Cloud</figcaption>
+</figure>
+</div>
+</div></div>
 </section>
 <section id="flight-data" class="slide level2">
 <h2>Flight &amp; Data</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
 <ul>
 <li>≥75–85% overlap; nadir + oblique</li>
 <li>GCPs or RTK/PPK</li>
 <li>Consistent exposure; avoid harsh shadows</li>
 </ul>
+</div><div class="column" style="width:60%;">
+<p><img data-src="images\flightPlan.png" alt="flight plan"> <img data-src="images\photo_positions.png" alt="Camera Positions"></p>
+</div></div>
 </section>
 <section id="products" class="slide level2">
 <h2>Products</h2>
@@ -160,6 +174,7 @@
 <li>DEM/DSM, orthomosaic, point cloud, mesh</li>
 <li>Derivatives: slope/aspect, contours, DoD (change)</li>
 </ul>
+<p><img data-src="images\abesink.gif" alt="3D Model"> <img data-src="images\sink-DEM.png" alt="DEM"></p>
 </section>
 <section id="workflow-highlights" class="slide level2 scrollable">
 <h2>Workflow Highlights</h2>
@@ -176,11 +191,21 @@
 <ul>
 <li>Delineate rims/depressions</li>
 <li>Metrics: depth, volume (cut/fill), slope, curvature</li>
-<li>Integrate with lineaments &amp; karst layers</li>
+<li>Integrate with lineaments &amp; karst layers <img data-src="https://www.researchgate.net/publication/276911008/figure/fig12/AS:341579878420483@1458450397228/Measurements-used-to-estimate-the-sinkhole-geometry.png"></li>
+</ul>
+</section>
+<section id="conclusion" class="slide level2">
+<h2>Conclusion</h2>
+<ul>
+<li>We want characterize the karst landscapes of Arizona</li>
+<li>We want to identify all the sinkholes and characterize theme</li>
+<li>SfM is a fast and accurate way to survey sinkholes</li>
+<li>Much more work is done on the backend to measure and categorize sinkholes after point cloud aquisition</li>
+<li>There are many commercial and open source tools that can help with SfM</li>
 </ul>
 
 
-</section></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
