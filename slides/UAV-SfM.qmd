@@ -4,30 +4,63 @@ format:
   revealjs:
     theme: moon
     slide-number: true
+    smaller: true
     transition: fade
+    hash: true
+    scrollable: true
 ---
 
-# UAV-based SfM
+## UAV-based SfM
 Why use SfM for mapping sinkhole characteristics?
+
+![](https://dl.acm.org/cms/attachment/4d59b96d-cabc-46c4-b0f6-be820d3ba4ee/jocch-21-0026-f05.jpg)
 
 ---
 
 ## What is SfM?
+
+:::: {.columns}
+
+::: {.column width="40%"}
 - 3D from overlapping 2D images
 - Camera poses + sparse cloud → MVS dense cloud → DEM/orthomosaic
+:::
+
+::: {.column width="60%"}
+![Point Cloud](images\point_cloud.gif)
+:::
+
+::::
 
 ---
 
 ## Flight & Data
+
+:::: {.columns}
+
+::: {.column width="40%"}
 - ≥75–85% overlap; nadir + oblique
 - GCPs or RTK/PPK
 - Consistent exposure; avoid harsh shadows
+
+:::
+
+::: {.column width="60%"}
+![flight plan](images\flightPlan.png)
+![Camera Positions](images\photo_positions.png)
+:::
+
+::::
+
 
 ---
 
 ## Products
 - DEM/DSM, orthomosaic, point cloud, mesh
 - Derivatives: slope/aspect, contours, DoD (change)
+
+![3D Model](images\abesink.gif)
+![DEM](images\sink-DEM.png)
 
 ---
 
@@ -44,3 +77,14 @@ Why use SfM for mapping sinkhole characteristics?
 - Delineate rims/depressions
 - Metrics: depth, volume (cut/fill), slope, curvature
 - Integrate with lineaments & karst layers
+![](https://www.researchgate.net/publication/276911008/figure/fig12/AS:341579878420483@1458450397228/Measurements-used-to-estimate-the-sinkhole-geometry.png)
+
+
+## Conclusion
+
+- We want characterize the karst landscapes of Arizona
+- We want to identify all the sinkholes and characterize theme
+- SfM is a fast and accurate way to survey sinkholes 
+- Much more work is done on the backend to measure and categorize sinkholes after point cloud aquisition
+- There are many commercial and open source tools that can help with SfM 
+

@@ -44,11 +44,22 @@
     ]
   },
   {
+    "objectID": "slides/UAV-SfM.html#uav-based-sfm",
+    "href": "slides/UAV-SfM.html#uav-based-sfm",
+    "title": "UAV-based Structure from Motion for Sinkhole Characterization",
+    "section": "UAV-based SfM",
+    "text": "UAV-based SfM\nWhy use SfM for mapping sinkhole characteristics?",
+    "crumbs": [
+      "Slides",
+      "UAV-based Structure from Motion"
+    ]
+  },
+  {
     "objectID": "slides/UAV-SfM.html#what-is-sfm",
     "href": "slides/UAV-SfM.html#what-is-sfm",
     "title": "UAV-based Structure from Motion for Sinkhole Characterization",
     "section": "What is SfM?",
-    "text": "What is SfM?\n\n3D from overlapping 2D images\nCamera poses + sparse cloud → MVS dense cloud → DEM/orthomosaic",
+    "text": "What is SfM?\n\n\n\n3D from overlapping 2D images\nCamera poses + sparse cloud → MVS dense cloud → DEM/orthomosaic\n\n\n\n\n\nPoint Cloud",
     "crumbs": [
       "Slides",
       "UAV-based Structure from Motion"
@@ -59,7 +70,7 @@
     "href": "slides/UAV-SfM.html#flight-data",
     "title": "UAV-based Structure from Motion for Sinkhole Characterization",
     "section": "Flight & Data",
-    "text": "Flight & Data\n\n≥75–85% overlap; nadir + oblique\nGCPs or RTK/PPK\nConsistent exposure; avoid harsh shadows",
+    "text": "Flight & Data\n\n\n\n≥75–85% overlap; nadir + oblique\nGCPs or RTK/PPK\nConsistent exposure; avoid harsh shadows",
     "crumbs": [
       "Slides",
       "UAV-based Structure from Motion"
@@ -99,6 +110,17 @@
     ]
   },
   {
+    "objectID": "slides/UAV-SfM.html#conclusion",
+    "href": "slides/UAV-SfM.html#conclusion",
+    "title": "UAV-based Structure from Motion for Sinkhole Characterization",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nWe want characterize the karst landscapes of Arizona\nWe want to identify all the sinkholes and characterize theme\nSfM is a fast and accurate way to survey sinkholes\nMuch more work is done on the backend to measure and categorize sinkholes after point cloud aquisition\nThere are many commercial and open source tools that can help with SfM",
+    "crumbs": [
+      "Slides",
+      "UAV-based Structure from Motion"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "DEM Site Assessment",
@@ -116,6 +138,160 @@
     "text": "Run the tutorials yourself using binder environment:\n\nTutorial 1: \nTutorial 2:",
     "crumbs": [
       "Home"
+    ]
+  },
+  {
+    "objectID": "slides/Karst-Landscape-Characterization.html#why-karst-characterization",
+    "href": "slides/Karst-Landscape-Characterization.html#why-karst-characterization",
+    "title": "Karst Landscape Characterization",
+    "section": "Why Karst Characterization?",
+    "text": "Why Karst Characterization?\n\n\n\n~20% of global land surface shows karst features; many aquifers are karstic.\nRapid, anisotropic flow → flashy recharge, contaminant vulnerability, sinkhole hazards.\nManagement needs spatially explicit maps: recharge zones, flow paths, hazard areas.\nGoal: reproducible workflow to identify lineaments & delineate sinkholes and derive metrics (depth, volume, density).",
+    "crumbs": [
+      "Slides",
+      "Karst Landscape Characterization"
+    ]
+  },
+  {
+    "objectID": "slides/Karst-Landscape-Characterization.html#what-is-karst-characterization",
+    "href": "slides/Karst-Landscape-Characterization.html#what-is-karst-characterization",
+    "title": "Karst Landscape Characterization",
+    "section": "What is “Karst Characterization”?",
+    "text": "What is “Karst Characterization”?\n\n\n\nIntegrated mapping of surface & subsurface indicators:\n\nSinkholes (dolines), dry valleys, uvalas, caves/springs\nLineaments (fractures/joints/faults) guiding groundwater flow\nDye Traces Identify flowpaths of water from sinks to springs, caves, streams\n\nProducts:\n\nInventories (points/polygons/lines), density maps, terrain derivatives\nSuitability/recharge potential layers for decision support\n\n\n\n\n\n\nKarst Dye Trace",
+    "crumbs": [
+      "Slides",
+      "Karst Landscape Characterization"
+    ]
+  },
+  {
+    "objectID": "slides/Karst-Landscape-Characterization.html#what-is-karst-characterization-1",
+    "href": "slides/Karst-Landscape-Characterization.html#what-is-karst-characterization-1",
+    "title": "Karst Landscape Characterization",
+    "section": "What is “Karst Characterization”?",
+    "text": "What is “Karst Characterization”?\n\n\n\n\n\nSinks\n\n\n\n\n\n\nFaults/Lineaments",
+    "crumbs": [
+      "Slides",
+      "Karst Landscape Characterization"
+    ]
+  },
+  {
+    "objectID": "slides/Karst-Landscape-Characterization.html#datasets",
+    "href": "slides/Karst-Landscape-Characterization.html#datasets",
+    "title": "Karst Landscape Characterization",
+    "section": "Datasets",
+    "text": "Datasets\n\nElevation: 3DEP (10–30 m) or local LiDAR (≤1 m)\nImagery: NAIP/Planet/Sentinel-2 (false color helpful)\nBedrock/Soils: geology units, GLHYMPS, SSURGO\nHydrography: NHD springs/streams; field GPS\nOptional: UAV-SfM for cm-scale morphology (lecture #2)\n\n   —",
+    "crumbs": [
+      "Slides",
+      "Karst Landscape Characterization"
+    ]
+  },
+  {
+    "objectID": "slides/Karst-Landscape-Characterization.html#dem-preprocessing",
+    "href": "slides/Karst-Landscape-Characterization.html#dem-preprocessing",
+    "title": "Karst Landscape Characterization",
+    "section": "DEM Preprocessing",
+    "text": "DEM Preprocessing\n\nReproject to target CRS (e.g., UTM 12N)\nFill small artifacts conservatively (avoid erasing true depressions)\nDerive slope, aspect, curvature, TPI/TRI\nMulti-scale analysis (window sizes tuned to expected sinkhole diameter)",
+    "crumbs": [
+      "Slides",
+      "Karst Landscape Characterization"
+    ]
+  },
+  {
+    "objectID": "slides/Karst-Landscape-Characterization.html#mapping-sinkholes-raster-first",
+    "href": "slides/Karst-Landscape-Characterization.html#mapping-sinkholes-raster-first",
+    "title": "Karst Landscape Characterization",
+    "section": "Mapping Sinkholes (Raster-first)",
+    "text": "Mapping Sinkholes (Raster-first)\n\nClosed-depression detection\n\nDEM fill vs. original → depth raster (Cut/Fill logic)\nThreshold minimum depth & minimum area\n\nMorphology filters\n\nTPI/TRI, curvature (concavity), circularity metrics\n\nVectorization\n\nRaster → polygons; clean with dissolve/simplify\n\nAttributes\n\nDepth, area, volume, elongation, circularity (4πA/P²)",
+    "crumbs": [
+      "Slides",
+      "Karst Landscape Characterization"
+    ]
+  },
+  {
+    "objectID": "slides/Karst-Landscape-Characterization.html#mapping-lineaments-rasterimagery",
+    "href": "slides/Karst-Landscape-Characterization.html#mapping-lineaments-rasterimagery",
+    "title": "Karst Landscape Characterization",
+    "section": "Mapping Lineaments (Raster/Imagery)",
+    "text": "Mapping Lineaments (Raster/Imagery)\nDEM-based (shaded relief): - Multi-azimuth hillshades; combine (min/mean) - Edge detection (Canny), non-max suppression - Hough Transform for straight segments; merge/extend with angular tolerance\nOptical imagery (optional): - Structural traces in bare or sparse vegetation - PCA/band ratios; NIR enhances lithologic contrasts\nPostprocess: - Snap/merge segments, remove short/noisy lines - Compute orientation (rose diagrams), length density (km/km²)",
+    "crumbs": [
+      "Slides",
+      "Karst Landscape Characterization"
+    ]
+  },
+  {
+    "objectID": "slides/Karst-Landscape-Characterization.html#typical-pitfalls",
+    "href": "slides/Karst-Landscape-Characterization.html#typical-pitfalls",
+    "title": "Karst Landscape Characterization",
+    "section": "Typical Pitfalls",
+    "text": "Typical Pitfalls\n\nDiffering definitions of lineaments\ndata scale/resolution\nNot all lineaments visible at surface\nsome lineaments are result of modern geomorphologic processes not underlying geology\nfill technique only works with closed sinks\nFalse sinks, and lineaments\nAnthropogenic depressions (quarries, tanks) → false positives",
+    "crumbs": [
+      "Slides",
+      "Karst Landscape Characterization"
+    ]
+  },
+  {
+    "objectID": "slides/Karst-Landscape-Characterization.html#minimal-workflow-concept",
+    "href": "slides/Karst-Landscape-Characterization.html#minimal-workflow-concept",
+    "title": "Karst Landscape Characterization",
+    "section": "Minimal Workflow (Concept)",
+    "text": "Minimal Workflow (Concept)\n\nAcquire & preprocess DEM (reproject, gentle fill)\nDerive terrain attributes (slope, curvature, TPI/TRI)\nSinkholes: depression depth → threshold → polygons → metrics\nLineaments: multi-azimuth hillshade → edges → Hough → merge → stats\nDensities/heatmaps; MCDA layers for recharge/hazard\nValidate; tune thresholds; document parameters & uncertainty",
+    "crumbs": [
+      "Slides",
+      "Karst Landscape Characterization"
+    ]
+  },
+  {
+    "objectID": "slides/Karst-Landscape-Characterization.html#outputs-end-uses",
+    "href": "slides/Karst-Landscape-Characterization.html#outputs-end-uses",
+    "title": "Karst Landscape Characterization",
+    "section": "Outputs & End-uses",
+    "text": "Outputs & End-uses\n\nSinkholes: polygon inventory with depth, area, volume, circularity\n\n\n\n\nSinkhole Density Maps\n\n\n\nLineaments: polyline set with azimuth, length; density rasters\n\n\n\n\nArizona Lineaments\n\n\n\n\n\nArizona Lineament Density\n\n\n\nDye Trace: polyline from introduction point to detection point\n\n\n\n\nDye Trace- Flowpath Map\n\n\n\nMaps: suitability/recharge potential, hazard zones\n\n\n\n\nVulnerability Map\n\n\n\n\n\nSankey Diagram\n\n\n\n\n\nMap of Recharge potential",
+    "crumbs": [
+      "Slides",
+      "Karst Landscape Characterization"
+    ]
+  },
+  {
+    "objectID": "slides/Karst-Landscape-Characterization.html#going-further",
+    "href": "slides/Karst-Landscape-Characterization.html#going-further",
+    "title": "Karst Landscape Characterization",
+    "section": "Going Further",
+    "text": "Going Further\nOnce a database of validated sinkholes and lineaments are created:\nUtilize the database for training a Deep Learning Model to Identify Sinks\n\nImage SegmentationUse Terrain attributes as input to DL model.\n\nincrease ability to automate karst landscape Characterization\nidentify sinks that are not closed or subtle lineaments (hard for current tools)",
+    "crumbs": [
+      "Slides",
+      "Karst Landscape Characterization"
+    ]
+  },
+  {
+    "objectID": "slides/Karst-Landscape-Characterization.html#toward-decision-support",
+    "href": "slides/Karst-Landscape-Characterization.html#toward-decision-support",
+    "title": "Karst Landscape Characterization",
+    "section": "Toward Decision Support",
+    "text": "Toward Decision Support\n\nCombine layers (weights/MCDA) for Opportunistic Recharge Enhancement\nPrioritize corridors where:\n\nSinkhole density is high and dolines are deep\nLineament density/orientation aligns with recharge pathways\nGeology/soil support high permeability\n\nFlag conflicts: infrastructure, contamination sources, protected areas\n\n  —",
+    "crumbs": [
+      "Slides",
+      "Karst Landscape Characterization"
+    ]
+  },
+  {
+    "objectID": "slides/Karst-Landscape-Characterization.html#next-lecture-uav-sfm",
+    "href": "slides/Karst-Landscape-Characterization.html#next-lecture-uav-sfm",
+    "title": "Karst Landscape Characterization",
+    "section": "Next Lecture (UAV-SfM)",
+    "text": "Next Lecture (UAV-SfM)\n\ncm-scale morphology of sinkholes",
+    "crumbs": [
+      "Slides",
+      "Karst Landscape Characterization"
+    ]
+  },
+  {
+    "objectID": "slides/Karst-Landscape-Characterization.html#acknowledgments-notes",
+    "href": "slides/Karst-Landscape-Characterization.html#acknowledgments-notes",
+    "title": "Karst Landscape Characterization",
+    "section": "Acknowledgments & Notes",
+    "text": "Acknowledgments & Notes\n\nThis deck summarizes standard karst/geomorphometry practice adapted to DEM workflows.\nAlways validate with field observations where feasible.\nDocument versions of data, parameters, and CRS for reproducibility.",
+    "crumbs": [
+      "Slides",
+      "Karst Landscape Characterization"
     ]
   },
   {
